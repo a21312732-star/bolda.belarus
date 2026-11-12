@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inkora — умный маркетинг со встроенным ИИ</title>
+  <meta name="description" content="Inkora — маркетинговая платформа со встроенным ИИ: восемь щупалец, которые ведут кампании, пишут тексты и считают аналитику за вас." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐙</text></svg>" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+    <div class="grain"></div>
+  </div>
+
+  <!-- Верхняя навигация -->
+  <header class="nav">
+    <a class="logo" href="#top"><span class="logo-mark"></span> Inkora</a>
+    <nav class="nav-links">
+      <a href="#features">Возможности</a>
+      <a href="#how">Как это работает</a>
+      <a href="#pricing">Тарифы</a>
+    </nav>
+    <a class="pill-btn" href="#start">Попробовать <span>→</span></a>
+    <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <!-- Боковое меню-«стекло» -->
+  <aside class="side glass" aria-label="Разделы">
+    <a href="#top" class="active">Главная</a>
+    <a href="#features">Щупальца</a>
+    <a href="#how">Процесс</a>
+    <a href="#stats">Результаты</a>
+    <a href="#pricing">Тарифы</a>
+    <a href="#start">Контакты</a>
+  </aside>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow reveal">Маркетинговая платформа нового поколения</p>
+        <h1 class="reveal">
+          Умный маркетинг.
+          <em>Встроенный ИИ</em>
+        </h1>
+        <p class="lead reveal">
+          У осьминога восемь щупалец и три сердца. У Inkora — восемь ИИ-модулей,
+          которые одновременно пишут тексты, запускают рекламу, сегментируют
+          аудиторию и считают окупаемость. Вы просто задаёте цель.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#start" class="btn btn-primary">Начать бесплатно</a>
+          <a href="#how" class="btn btn-ghost">Смотреть, как работает</a>
+        </div>
+        <div class="trust reveal">
+          <span>★★★★★</span> 4.9 · более 1 200 команд уже с нами
+        </div>
+      </div>
+
+      <div class="octo-wrap" aria-hidden="true">
+        <svg class="octo" viewBox="0 0 400 480">
+          <defs>
+            <radialGradient id="skin" cx="45%" cy="30%" r="75%">
+              <stop offset="0" stop-color="#ff9ad8"/>
+              <stop offset=".45" stop-color="#c03aa8"/>
+              <stop offset="1" stop-color="#5a1170"/>
+            </radialGradient>
+            <linearGradient id="tent" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#b23498"/>
+              <stop offset="1" stop-color="#6a1880"/>
+            </linearGradient>
+            <radialGradient id="iris" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#1a0630"/>
+              <stop offset=".55" stop-color="#7b2ff7"/>
+              <stop offset="1" stop-color="#2b0a4a"/>
+            </radialGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="14"/>
+            </filter>
+          </defs>
+
+          <ellipse cx="200" cy="170" rx="150" ry="120" fill="#ff4fc3" opacity=".35" filter="url(#glow)"/>
+
+          <!-- щупальца -->
+          <g class="tentacles" fill="none" stroke-linecap="round">
+            <g class="t" style="--d:0s;--r:6deg"><path d="M150 230 C 90 280, 40 300, 30 380 S 70 450, 40 470" stroke="url(#tent)" stroke-width="30"/><path class="suck" d="M150 230 C 90 280, 40 300, 30 380 S 70 450, 40 470"/></g>
+            <g class="t" style="--d:-.6s;--r:-5deg"><path d="M165 240 C 130 300, 100 340, 110 400 S 90 460, 70 470" stroke="url(#tent)" stroke-width="30"/><path class="suck" d="M165 240 C 130 300, 100 340, 110 400 S 90 460, 70 470"/></g>
+            <g class="t" style="--d:-1.2s;--r:4deg"><path d="M185 248 C 170 310, 150 360, 170 410 S 150 470, 130 476" stroke="url(#tent)" stroke-width="30"/><path class="suck" d="M185 248 C 170 310, 150 360, 170 410 S 150 470, 130 476"/></g>
+            <g class="t" style="--d:-1.8s;--r:-4deg"><path d="M205 250 C 215 310, 200 370, 225 420 S 230 470, 250 476" stroke="url(#tent)" stroke-width="30"/><path class="suck" d="M205 250 C 215 310, 200 370, 225 420 S 230 470, 250 476"/></g>
+            <g class="t" style="--d:-2.4s;--r:5deg"><path d="M225 245 C 250 300, 270 340, 270 400 S 300 460, 320 468" stroke="url(#tent)" stroke-width="30"/><path class="suck" d="M225 245 C 250 300, 270 340, 270 400 S 300 460, 320 468"/></g>
+            <g class="t" style="--d:-3s;--r:-6deg"><path d="M245 232 C 300 270, 350 300, 360 370 S 330 440, 370 466" stroke="url(#tent)" stroke-width="30"/><path class="suck" d="M245 232 C 300 270, 350 300, 360 370 S 330 440, 370 466"/></g>
+            <g class="t" style="--d:-.3s;--r:7deg"><path d="M135 215 C 80 230, 30 220, 18 270" stroke="url(#tent)" stroke-width="26"/><path class="suck" d="M135 215 C 80 230, 30 220, 18 270"/></g>
+            <g class="t" style="--d:-2.1s;--r:-7deg"><path d="M265 215 C 320 230, 370 220, 382 270" stroke="url(#tent)" stroke-width="26"/><path class="suck" d="M265 215 C 320 230, 370 220, 382 270"/></g>
+          </g>
+
+          <!-- голова -->
+          <path class="head" d="M200 30 C 300 30, 330 120, 310 190 C 295 240, 250 258, 200 258 C 150 258, 105 240, 90 190 C 70 120, 100 30, 200 30 Z" fill="url(#skin)"/>
+          <ellipse cx="165" cy="85" rx="40" ry="22" fill="#fff" opacity=".18" transform="rotate(-20 165 85)"/>
+          <g fill="#ffb3e4" opacity=".35">
+            <circle cx="250" cy="80" r="6"/><circle cx="270" cy="110" r="4"/><circle cx="130" cy="130" r="5"/><circle cx="230" cy="55" r="3"/>
+          </g>
+
+          <!-- глаза -->
+          <g class="eye" data-cx="155" data-cy="180">
+            <ellipse cx="155" cy="180" rx="30" ry="32" fill="#fde7f6"/>
+            <g class="pupil"><circle cx="155" cy="182" r="19" fill="url(#iris)"/><circle cx="148" cy="174" r="6" fill="#fff"/></g>
+            <path class="lid" d="M123 180 Q155 140 187 180" fill="#a42e93"/>
+          </g>
+          <g class="eye" data-cx="245" data-cy="180">
+            <ellipse cx="245" cy="180" rx="30" ry="32" fill="#fde7f6"/>
+            <g class="pupil"><circle cx="245" cy="182" r="19" fill="url(#iris)"/><circle cx="238" cy="174" r="6" fill="#fff"/></g>
+            <path class="lid" d="M213 180 Q245 140 277 180" fill="#a42e93"/>
+          </g>
+        </svg>
+        <div class="float-card glass c1"><b>+38%</b><span>CTR за неделю</span></div>
+        <div class="float-card glass c2"><b>12 мин</b><span>до запуска кампании</span></div>
+      </div>
+    </section>
+
+    <!-- Логотипы / бегущая строка -->
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span>Контент</span>·<span>Реклама</span>·<span>CRM</span>·<span>Email</span>·<span>Telegram-боты</span>·<span>SEO</span>·<span>Аналитика</span>·<span>A/B-тесты</span>·
+        <span>Контент</span>·<span>Реклама</span>·<span>CRM</span>·<span>Email</span>·<span>Telegram-боты</span>·<span>SEO</span>·<span>Аналитика</span>·<span>A/B-тесты</span>·
+      </div>
+    </div>
+
+    <!-- ВОЗМОЖНОСТИ -->
+    <section id="features" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Восемь щупалец</p>
+        <h2>Одна платформа. <em>Восемь рук.</em></h2>
+        <p class="muted">Каждый модуль работает сам по себе — и вместе с остальными, как единый организм.</p>
+      </div>
+      <div class="grid">
+        <article class="card glass reveal"><span class="ico">✍️</span><h3>Тексты</h3><p>Посты, лендинги и рассылки в голосе вашего бренда за секунды.</p></article>
+        <article class="card glass reveal"><span class="ico">🎯</span><h3>Таргетинг</h3><p>ИИ сам находит сегменты, которые покупают, а не просто кликают.</p></article>
+        <article class="card glass reveal"><span class="ico">📈</span><h3>Аналитика</h3><p>Сквозные отчёты без таблиц: спросите словами — получите график.</p></article>
+        <article class="card glass reveal"><span class="ico">🤖</span><h3>Боты</h3><p>Telegram-бот для заявок и поддержки — собирается за пару минут.</p></article>
+        <article class="card glass reveal"><span class="ico">🧪</span><h3>A/B-тесты</h3><p>Десятки вариантов креативов, победитель выбирается автоматически.</p></article>
+        <article class="card glass reveal"><span class="ico">🎨</span><h3>Креативы</h3><p>Баннеры и обложки в фирменных цветах — без дизайнера на подхвате.</p></article>
+        <article class="card glass reveal"><span class="ico">🔍</span><h3>SEO</h3><p>Семантика, мета-теги и структура страниц под поисковики.</p></article>
+        <article class="card glass reveal"><span class="ico">🛡️</span><h3>Безопасность</h3><p>Данные шифруются и остаются вашими. Никакого обучения на них.</p></article>
+      </div>
+    </section>
+
+    <!-- КАК ЭТО РАБОТАЕТ -->
+    <section id="how" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Процесс</p>
+        <h2>Просто <em>начни</em></h2>
+      </div>
+      <ol class="steps">
+        <li class="glass reveal"><span class="num">01</span><h3>Опишите цель</h3><p>«Хочу 300 заявок на курс до конца месяца» — этого достаточно.</p></li>
+        <li class="glass reveal"><span class="num">02</span><h3>ИИ строит план</h3><p>Каналы, бюджет, тексты, креативы и бот — готовый план за пару минут.</p></li>
+        <li class="glass reveal"><span class="num">03</span><h3>Запуск и рост</h3><p>Кампании работают, Inkora учится на результатах и улучшает их каждый день.</p></li>
+      </ol>
+    </section>
+
+    <!-- ЦИФРЫ -->
+    <section id="stats" class="section stats">
+      <div class="stat reveal"><b data-count="1200">0</b><span>команд</span></div>
+      <div class="stat reveal"><b data-count="38" data-suffix="%">0</b><span>средний рост CTR</span></div>
+      <div class="stat reveal"><b data-count="8">0</b><span>ИИ-модулей</span></div>
+      <div class="stat reveal"><b data-count="24" data-suffix="/7">0</b><span>работает без выходных</span></div>
+    </section>
+
+    <!-- ТАРИФЫ -->
+    <section id="pricing" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Тарифы</p>
+        <h2>Платите за <em>результат</em></h2>
+      </div>
+      <div class="prices">
+        <div class="price glass reveal">
+          <h3>Старт</h3><p class="cost">0 ₽<small>/мес</small></p>
+          <ul><li>2 модуля</li><li>1 Telegram-бот</li><li>100 генераций</li></ul>
+          <a href="#start" class="btn btn-ghost">Выбрать</a>
+        </div>
+        <div class="price glass featured reveal">
+          <span class="badge">Популярный</span>
+          <h3>Рост</h3><p class="cost">2 990 ₽<small>/мес</small></p>
+          <ul><li>Все 8 модулей</li><li>5 ботов</li><li>Безлимит генераций</li><li>Сквозная аналитика</li></ul>
+          <a href="#start" class="btn btn-primary">Выбрать</a>
+        </div>
+        <div class="price glass reveal">
+          <h3>Команда</h3><p class="cost">9 990 ₽<small>/мес</small></p>
+          <ul><li>Всё из «Роста»</li><li>До 20 человек</li><li>Персональный менеджер</li></ul>
+          <a href="#start" class="btn btn-ghost">Выбрать</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="start" class="section">
+      <div class="cta glass reveal">
+        <h2>Хватит листать ленту. <em>Сделай своё.</em></h2>
+        <p class="muted">Первый сайт, стартап или тг-бот — оставьте почту, и мы пришлём доступ.</p>
+        <form class="form" id="form">
+          <input type="email" required placeholder="you@email.com" aria-label="Email" />
+          <button class="btn btn-primary" type="submit">Получить доступ</button>
+        </form>
+        <p class="form-msg" id="form-msg" role="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Inkora</span>
+    <span>Сделано с помощью Claude 🐙</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
