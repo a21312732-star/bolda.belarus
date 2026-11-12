@@ -1,82 +1,86 @@
-// Появление блоков при прокрутке
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Плавное появление текста при скролле
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => {
-    if (e.isIntersecting) {
-      e.target.classList.add('in');
-      io.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
-}, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach((el, i) => {
-  el.style.transitionDelay = `${(i % 4) * 80}ms`;
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach((el) => {
+  const siblings = [...el.parentElement.querySelectorAll(':scope > .reveal')];
+  el.style.transitionDelay = `${siblings.indexOf(el) * 90}ms`;
   io.observe(el);
 });
 
-// Глаза осьминога следят за курсором
-const svg = document.querySelector('.octo');
-const eyes = [...document.querySelectorAll('.eye')];
-function look(clientX, clientY) {
-  if (!svg) return;
-  const r = svg.getBoundingClientRect();
-  const scale = r.width / 400;
-  eyes.forEach((eye) => {
-    const cx = r.left + eye.dataset.cx * scale;
-    const cy = r.top + eye.dataset.cy * scale;
-    const a = Math.atan2(clientY - cy, clientX - cx);
-    const d = Math.min(9, Math.hypot(clientX - cx, clientY - cy) / 25);
-    eye.querySelector('.pupil').style.transform =
-      `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d}px)`;
-  });
+// Параллакс осьминога за курсором + лёгкий сдвиг при скролле
+const layer = document.querySelector('.parallax');
+let mx = 0, my = 0, sy = 0;
+function applyParallax() {
+  layer.style.transform = `translate3d(${mx * -26}px, ${my * -18 + sy}px, 0) rotate(${mx * -1.2}deg)`;
 }
-window.addEventListener('pointermove', (e) => look(e.clientX, e.clientY));
+if (!reduceMotion && layer) {
+  window.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse') return;
+    mx = e.clientX / innerWidth - 0.5;
+    my = e.clientY / innerHeight - 0.5;
+    applyParallax();
+  });
+  window.addEventListener('scroll', () => {
+    sy = Math.min(scrollY, innerHeight) * 0.25;
+    applyParallax();
+  }, { passive: true });
+}
+
+// Видео: на некоторых телефонах autoplay нужно «подтолкнуть»
+const video = document.querySelector('.octopus');
+if (video) {
+  const play = () => video.play().catch(() => {});
+  play();
+  document.addEventListener('touchstart', play, { once: true, passive: true });
+}
 
 // Счётчики
 const counter = new IntersectionObserver((entries) => {
   entries.forEach((e) => {
     if (!e.isIntersecting) return;
-    const el = e.target;
-    const target = +el.dataset.count;
-    const suffix = el.dataset.suffix || '';
-    const start = performance.now();
-    const step = (t) => {
-      const p = Math.min(1, (t - start) / 1400);
-      const v = Math.round(target * (1 - Math.pow(1 - p, 3)));
-      el.textContent = v.toLocaleString('ru-RU') + suffix;
-      if (p < 1) requestAnimationFrame(step);
+    const el = e.target, target = +el.dataset.count, suffix = el.dataset.suffix || '';
+    const t0 = performance.now();
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / 1600);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString('en-US') + suffix;
+      if (p < 1) requestAnimationFrame(tick);
     };
-    requestAnimationFrame(step);
+    requestAnimationFrame(tick);
     counter.unobserve(el);
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.6 });
 document.querySelectorAll('[data-count]').forEach((el) => counter.observe(el));
 
-// Подсветка активного пункта бокового меню
-const links = [...document.querySelectorAll('.side a')];
-const sections = links
-  .map((a) => document.querySelector(a.getAttribute('href')))
-  .filter(Boolean);
+// Активный пункт меню
+const links = [...document.querySelectorAll('.panel a')];
+const targets = links.map((a) => document.querySelector(a.getAttribute('href')));
 window.addEventListener('scroll', () => {
-  const y = window.scrollY + window.innerHeight / 3;
-  let current = sections[0];
-  sections.forEach((s) => { if (s.offsetTop <= y) current = s; });
-  links.forEach((a) =>
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+  const y = scrollY + innerHeight * 0.4;
+  let idx = 0;
+  targets.forEach((s, i) => { if (s && s.offsetTop <= y) idx = i; });
+  links.forEach((a, i) => a.classList.toggle('active', i === idx));
 }, { passive: true });
 
 // Мобильное меню
-const nav = document.querySelector('.nav');
-const burger = document.querySelector('.burger');
-burger.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  burger.setAttribute('aria-expanded', open);
+const panel = document.getElementById('panel');
+const toggle = document.querySelector('.menu-toggle');
+toggle.addEventListener('click', () => {
+  const open = panel.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open);
 });
-nav.querySelectorAll('.nav-links a').forEach((a) =>
-  a.addEventListener('click', () => nav.classList.remove('open')));
+links.forEach((a) => a.addEventListener('click', () => {
+  panel.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+}));
 
 // Форма
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
-  const msg = document.getElementById('form-msg');
-  msg.textContent = 'Готово! 🐙 Мы пришлём доступ на вашу почту.';
+  document.getElementById('form-msg').textContent = 'Thank you — an expert will be in touch shortly.';
   e.target.reset();
 });
